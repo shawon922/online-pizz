@@ -21,12 +21,12 @@ Route::get('/products', 'ProductController@index');
 // Route::middleware(['auth:api'])->group(function () {
     Route::post('/products', 'ProductController@store');
     Route::get('/products/{product}', 'ProductController@show');
-    Route::patch('/products/{product}', 'ProductController@update');
-    Route::delete('/products/{product}', 'ProductController@destroy');
+    // Route::patch('/products/{product}', 'ProductController@update');
+    // Route::delete('/products/{product}', 'ProductController@destroy');
 
     Route::get('/carts', 'CartController@index');
     Route::post('/carts', 'CartController@store');
-    Route::patch('/carts/{cart}', 'CartController@update');
+    // Route::patch('/carts/{cart}', 'CartController@update');
     Route::delete('/carts/{cart}', 'CartController@destroy');
 
     Route::get('/orders', 'OrderController@index');

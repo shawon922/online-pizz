@@ -2,6 +2,9 @@
 
 A simple online shop with minimal features.
 
+# UI REPO
+  https://github.com/shawon922/online-pizz-ui.git
+
 ----------
 
 # Getting started
