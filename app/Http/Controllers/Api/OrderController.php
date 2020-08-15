@@ -51,6 +51,7 @@ class OrderController extends Controller
         DB::beginTransaction();
 
         try {
+            $data['order_number'] = 'ORDER-'.uniqid();
             $order = Order::create($data);
             $subtotal = $total = 0;
 
@@ -66,7 +67,7 @@ class OrderController extends Controller
             }
 
             $vat = ($subtotal * 15) / 100;
-            $shippingCost = 100;
+            $shippingCost = 10;
 
             $order->user_ip = $userIp;
             $order->subtotal = $subtotal;

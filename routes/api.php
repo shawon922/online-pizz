@@ -29,7 +29,7 @@ Route::get('/products', 'ProductController@index');
     Route::patch('/carts/{cart}', 'CartController@update');
     Route::delete('/carts/{cart}', 'CartController@destroy');
 
-    // Route::get('/orders', 'OrderController@index');
+    Route::get('/orders', 'OrderController@index');
     Route::post('/orders', 'OrderController@store');
     // Route::get('/orders/{order}', 'OrderController@show');
     // Route::patch('/orders/{order}', 'OrderController@update');

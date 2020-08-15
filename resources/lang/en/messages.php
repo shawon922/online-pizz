@@ -17,9 +17,19 @@ return [
     'product_not_found' => 'Item not found.',
     'cart_is_empty' => 'Cart is empty. Please add some items.',
 
-    'billing_name' => 'Name is required.',
-    'billing_phone' => 'Phone number is required.',
-    'billing_email' => 'Email address is required.',
-    'billing_address' => 'Address is required.',
-    'billing_city' => 'City is required.',
+    'billing_name' => [
+        'required' => 'Name is required.'
+    ],
+    'billing_phone' =>  [
+        'required' => 'Phone number is required.'
+    ],
+    'billing_email' =>  [
+        'required' => 'Email address is required.'
+    ],
+    'billing_address' =>  [
+        'required' => 'Address is required.'
+    ],
+    'billing_city' =>  [
+        'required' => 'City is required.'
+    ],
 ];

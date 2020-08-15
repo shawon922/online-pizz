@@ -13,6 +13,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
+        'order_number',
         'billing_name',
         'billing_phone',
         'billing_email',
