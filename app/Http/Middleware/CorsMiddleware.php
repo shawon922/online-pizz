@@ -20,7 +20,7 @@
         'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS, PUT, PATCH, DELETE',
         'Access-Control-Allow-Credentials' => 'true',
         'Access-Control-Max-Age'           => '86400',
-        'Access-Control-Allow-Headers'     => 'Access-Control-*, Origin, Content-Type, Authorization, X-Requested-With, Currency-Type,',
+        'Access-Control-Allow-Headers'     => 'Access-Control-*, Origin, Content-Type, Authorization, X-Requested-With, Currency-Type',
         'Access-Control-Expose-Headers'     => 'Content-Disposition',
       ];
 
