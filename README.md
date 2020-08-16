@@ -122,7 +122,8 @@ Request headers
 | **Required** 	| **Key**              	| **Value**            	|
 |----------	|------------------	|------------------	|
 | Yes      	| Content-Type     	| application/json 	|
-| Yes      	| Accept 	          | application/json  |
+| Yes      	| Accept 	        | application/json  |
+| No      	| Currency-Type     | USD or EUR        |
 
 
 ----------
