@@ -5,11 +5,11 @@ namespace App\Models;
 use App\Models\BaseModel as Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use RaggiTech\Laravel\Currency\hasCurrency;
+// use \RaggiTech\Laravel\Currency\hasCurrency;
 
 class Product extends Model
 {
-    use hasCurrency;
+    use \RaggiTech\Laravel\Currency\hasCurrency;
     
     /**
      * The attributes that are mass assignable.
