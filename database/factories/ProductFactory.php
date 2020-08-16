@@ -15,6 +15,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'image_path' => $faker->imageUrl(100, 100),
         'description' => $faker->paragraph(),
         'in_stock' => rand(50, 100),
-        'unit_price' => rand(100, 600),
+        'unit_price' => rand(20, 100),
     ];
 });

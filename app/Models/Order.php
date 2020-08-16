@@ -24,6 +24,26 @@ class Order extends Model
         'billing_postalcode',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['currency_symbol', ];
+
+    /**
+     * Get currency symbol
+     *
+     * @return string
+     */
+    public function getCurrencySymbolAttribute()
+    {   
+        $currencyType = request()->header('Currency-Type') ? request()->header('Currency-Type') : 'USD';
+
+        return $currencyType === 'EUR' ? '€' : '$';
+    }
+
+
     public function products()
     {
         return $this->belongsToMany('App\Models\Product')->withPivot('quantity', 'unit_price')->withTimestamps();

@@ -38,6 +38,8 @@ class OrderController extends Controller
      */
     public function store(PlaceOrderRequest $request)
     {
+        $currencyType = $request->header('Currency-Type') ? $request->header('Currency-Type') : 'USD';
+
         $data = $request->all();
         $userIp = $request->ip();
         $cart = Cart::where([
@@ -56,7 +58,7 @@ class OrderController extends Controller
             $subtotal = $total = 0;
 
             foreach ($cart as $item) { 
-                $unitPrice = $item->product->unit_price;
+                $unitPrice = $item->product->currency($currencyType);
 
                 $order->products()->attach($item->product_id, [
                     'quantity' => $item->quantity,
@@ -74,6 +76,7 @@ class OrderController extends Controller
             $order->vat = $vat;
             $order->shipping_cost = $shippingCost;
             $order->total = $subtotal + $vat + $shippingCost;
+            $order->currency_type = $currencyType;
             
             $order->save();
 

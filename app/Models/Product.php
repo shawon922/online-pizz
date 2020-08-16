@@ -5,9 +5,12 @@ namespace App\Models;
 use App\Models\BaseModel as Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RaggiTech\Laravel\Currency\hasCurrency;
 
 class Product extends Model
 {
+    use hasCurrency;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -38,7 +41,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $appends = ['full_image_path', ];
+    protected $appends = ['full_image_path', 'currency_symbol', 'currency_unit_price', ];
 
     /**
      * Generate and set unique slug
@@ -55,6 +58,30 @@ class Product extends Model
         $this->attributes['slug'] = $slug;
     }
     
+    /**
+     * Get currency symbol
+     *
+     * @return string
+     */
+    public function getCurrencySymbolAttribute()
+    {   
+        $currencyType = request()->header('Currency-Type') ? request()->header('Currency-Type') : 'USD';
+
+        return $currencyType === 'EUR' ? '€' : '$';
+    }
+
+    /**
+     * Get currency based price
+     *
+     * @return number
+     */
+    public function getCurrencyUnitPriceAttribute()
+    {   
+        $currencyType = request()->header('Currency-Type') ? request()->header('Currency-Type') : 'USD';
+
+        return $this->currency($currencyType);
+    }
+
     /**
      * Get full image url.
      *

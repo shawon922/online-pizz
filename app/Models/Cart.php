@@ -33,7 +33,19 @@ class Cart extends Model
      *
      * @var array
      */
-    protected $appends = ['unit_price', 'product_total', ];
+    protected $appends = ['unit_price', 'product_total', 'currency_symbol', ];
+
+    /**
+     * Get currency symbol
+     *
+     * @return string
+     */
+    public function getCurrencySymbolAttribute()
+    {   
+        $currencyType = request()->header('Currency-Type') ? request()->header('Currency-Type') : 'USD';
+
+        return $currencyType === 'EUR' ? '€' : '$';
+    }
 
     /**
      * Get unit price
@@ -42,14 +54,17 @@ class Cart extends Model
      */
     public function getUnitPriceAttribute()
     {
+        $currencyType = request()->header('Currency-Type') ? request()->header('Currency-Type') : 'USD';
+
         try {
-            $unitPrice = $this->product->unit_price;
+            $unitPrice = $this->product->currency($currencyType);
         } catch (\Exception $e) {
             $unitPrice = 0;
         }
 
         return number_format($unitPrice, 2, '.', '');
     }
+
     /**
      * Get product total (quantity * unit_price)
      *
@@ -57,8 +72,10 @@ class Cart extends Model
      */
     public function getProductTotalAttribute()
     {
+        $currencyType = request()->header('Currency-Type') ? request()->header('Currency-Type') : 'USD';
+
         try {
-            $total = $this->quantity * $this->product->unit_price;
+            $total = $this->quantity * $this->product->currency($currencyType);
         } catch (\Exception $e) {
             $total = 0;
         }

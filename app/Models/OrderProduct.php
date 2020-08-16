@@ -17,6 +17,7 @@ class OrderProduct extends Model
         'order_id', 
         'product_id', 
         'quantity',
-        'unit_price'
+        'unit_price',
+        // 'currency_type',
     ];
 }
